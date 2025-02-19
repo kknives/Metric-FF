@@ -9,7 +9,7 @@ ADDONS	=
 
 CC      = gcc
 
-CFLAGS	= -O6 -ansi $(TYPE) $(ADDONS) -g
+CFLAGS	= -O6 -std=c99 $(TYPE) $(ADDONS) -g
 # -g -pg
 
 LIBS    = -lm
@@ -53,7 +53,7 @@ OBJECTS 	= $(SOURCES:.c=.o)
 
 
 ff: $(OBJECTS) $(PDDL_PARSER_OBJ)
-	$(CC) -o ff $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS)
+	$(CC) -o ff $(OBJECTS) $(PDDL_PARSER_OBJ) $(CFLAGS) $(LIBS) -Wl,--allow-multiple-definition
 
 # pddl syntax
 scan-fct_pddl.tab.c: scan-fct_pddl.y lex.fct_pddl.c
